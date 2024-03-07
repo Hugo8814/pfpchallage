@@ -8,9 +8,6 @@ function App() {
       <Avatar photo="unsplash.jpg" />
       <div className="data">
         <Intro />
-        {/* Should contain one Skill component
-        for each web dev skill that you have,
-        customized with props */}
         <SkillList />
       </div>
     </div>
@@ -32,7 +29,25 @@ function Intro() {
   );
 }
 function SkillList() {
-  <ul></ul>;
+  return (
+    <ul className="skill-list">
+      <Skill skill="React" emoji="👶" color="lightBlue" />
+      <Skill skill="HTML" emoji="💪" color="orangeRed" />
+      <Skill skill="css" emoji="💪" color="blue" />
+      <Skill skill="Sass" emoji="💪" color="pink" />
+      <Skill skill="JavaScript" emoji="💪" color="yellow" />
+      <Skill skill="GIT" emoji="👍" color="red" />
+    </ul>
+  );
+}
+
+function Skill(props) {
+  return (
+    <li className="skill" style={{ backgroundColor: props.color }}>
+      {props.skill}
+      {props.emoji}
+    </li>
+  );
 }
 
 const rootElement = document.getElementById("root");
