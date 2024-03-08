@@ -2,6 +2,39 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles.css";
 
+const skills = [
+  {
+    skills: "HTML",
+    level: "advanced",
+    color: "orangeRed",
+  },
+  {
+    skills: "CSS",
+    level: "advanced",
+    color: "blue",
+  },
+  {
+    skills: "JavaScript,",
+    level: "advanced",
+    color: "yellow",
+  },
+  {
+    skills: "SASS",
+    level: "advanced",
+    color: "pink",
+  },
+  {
+    skills: "React",
+    level: "noob",
+    color: "lightBlue",
+  },
+  {
+    skills: "github",
+    level: "mid",
+    color: "red",
+  },
+];
+
 function App() {
   return (
     <div className="card">
@@ -13,6 +46,30 @@ function App() {
     </div>
   );
 }
+function SkillList({ skill }) {
+  skill = skills;
+  console.log(skill);
+
+  return (
+    <ul className="skill-list">
+      {skills.map((skill) => (
+        <Skill key={skill.skills} {...skill} />
+      ))}
+    </ul>
+  );
+}
+function Skill(props) {
+  console.log(props);
+  const icon =
+    props.level === "advanced" ? " 💪" : props.level === "mid" ? " 👍" : " 👶";
+  return (
+    <li className="skill" style={{ backgroundColor: props.color }}>
+      {props.skills}
+      {icon}
+    </li>
+  );
+}
+
 function Avatar(props) {
   // Add this line to log the photo path
   return <img className="avatar" src={props.photo} alt="avatar" />;
@@ -26,27 +83,6 @@ function Intro() {
         consectetur adipisicing elit. Iure maiores eos veritatis. Unde illo
       </p>
     </div>
-  );
-}
-function SkillList() {
-  return (
-    <ul className="skill-list">
-      <Skill skill="React" emoji="👶" color="lightBlue" />
-      <Skill skill="HTML" emoji="💪" color="orangeRed" />
-      <Skill skill="css" emoji="💪" color="blue" />
-      <Skill skill="Sass" emoji="💪" color="pink" />
-      <Skill skill="JavaScript" emoji="💪" color="yellow" />
-      <Skill skill="GIT" emoji="👍" color="red" />
-    </ul>
-  );
-}
-
-function Skill(props) {
-  return (
-    <li className="skill" style={{ backgroundColor: props.color }}>
-      {props.skill}
-      {props.emoji}
-    </li>
   );
 }
 
